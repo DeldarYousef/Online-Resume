@@ -1,61 +1,606 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>My Resume</title>
-  </head>
-  <body>
-    <h1>Deldar Yousef</h1>
-    <img src="./IMG_2847.JPG" height="350" alt="Me" />
-    <h2>Summary</h2>
-    <p>
-      I am a motivated Engineering student specializing in Computer
-      Science/Engineering with experience in data analysis and sales. With my
-      strong programming skills in languages such as C, C++, Python, and MatLab,
-      I aim to gain practical experience in this field.
-    </p>
-    <hr />
-    <h2>Education</h2>
-    <ul>
-      <li>
-        Master of Science in Computer Engineering - Örebro
-        University(2021-2026*)
-      </li>
-    </ul>
-    <hr />
-    <h2>Work Experience</h2>
-    <ul>
-      <li>
-        <h3>Data Analyst Intern - Hitaci Energy</h3>
-        <p>June 2024 - July 2024</p>
-        <p>Worked on a project independently with some support from a handler to create reports in Power BI to keep track of file activity in the company </p>
-        <li>Coded in Python to extract necessary data from a version control system</li>
-        <li>Set up a database to store the data</li>
-        <li>Connected the database to Power BI to create the reports</li>
-      </li>
-      <li>
-        <h3>Seller - Cirkel K</h3>
-        <p>Mars 2022 - present </p>
-        <p>A part time job during my studies</p>
-        <li> Provided excellent customer service by assisting customers with purchases, answering inquiries, and resolving issues.</li>
-        <li>Operated the cash register, handled transactions efficiently, and maintained accurate financial records.</li>
-        <li> Managed inventory by restocking shelves, monitoring product levels, and organizing displays to enhance sales.</li>
-    </li>
-    </ul>
-    <hr />
-    <h2>Skills</h2>
-    <ul>
-        <li>Driven and Goal-Oriented: Demonstrates ambition and a strong focus on achieving objectives, with completed coursework in Object-Oriented Programming and advanced mathematics.</li>
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Deldar Yousef — Computer Engineer</title>
+<meta name="description" content="Deldar Yousef — M.Sc. Computer Engineer specializing in computer vision, industrial measurement and automation." />
 
-        <li>Proficient in Programming and Data Analysis: Skilled in multiple programming languages, including C, C++, Python, and Matlab, with experience in PowerBI and SQL Server databases.</li>
-            
-        <li>Technically Versatile: Combines programming knowledge with practical experience in data analysis tools, contributing effectively to complex technical projects.</li>
-    </ul>
-    <h2>Other</h2>
-    <ul><li><a href="./Hobbies.html">My Hobbies</a></li>
-    <li><a href="./Contact.html">Contact Me</a></li></ul>
-    <footer><small>© Deldar Yousef. All rights reserved.</small></footer>
-  </body>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Sans:wght@300;400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 
+<style>
+:root{
+  --bg:#0D1217;
+  --bg-2:#10171E;
+  --panel:#161F28;
+  --panel-2:#1B2630;
+  --line:rgba(232,240,247,.09);
+  --line-strong:rgba(232,240,247,.16);
+  --grid:rgba(61,214,192,.045);
+  --ink:#EAF1F7;
+  --muted:#8B9BAB;
+  --faint:#5E6E7C;
+  --teal:#3DD6C0;
+  --teal-dim:#2BA796;
+  --teal-soft:rgba(61,214,192,.13);
+  --amber:#F0A64C;
+  --amber-soft:rgba(240,166,76,.13);
+
+  --display:'Space Grotesk',sans-serif;
+  --body:'IBM Plex Sans',sans-serif;
+  --mono:'IBM Plex Mono',ui-monospace,monospace;
+
+  --maxw:1160px;
+}
+
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  background:var(--bg);
+  color:var(--ink);
+  font-family:var(--body);
+  font-weight:300;
+  line-height:1.6;
+  -webkit-font-smoothing:antialiased;
+  overflow-x:hidden;
+}
+
+/* ambient technical grid */
+body::before{
+  content:"";
+  position:fixed;
+  inset:0;
+  background-image:
+    linear-gradient(var(--grid) 1px,transparent 1px),
+    linear-gradient(90deg,var(--grid) 1px,transparent 1px);
+  background-size:46px 46px;
+  z-index:0;
+  pointer-events:none;
+  mask-image:radial-gradient(circle at 50% 25%,#000 0%,transparent 78%);
+}
+
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 28px;position:relative;z-index:1}
+
+/* mono utility label */
+.tag{
+  font-family:var(--mono);
+  font-size:.7rem;
+  letter-spacing:.22em;
+  text-transform:uppercase;
+  color:var(--teal);
+}
+.tag.amber{color:var(--amber)}
+.tag.muted{color:var(--faint)}
+
+/* ===================== NAV ===================== */
+nav{
+  position:sticky;top:0;z-index:50;
+  backdrop-filter:blur(10px);
+  background:rgba(13,18,23,.72);
+  border-bottom:1px solid var(--line);
+}
+.nav-inner{
+  max-width:var(--maxw);margin:0 auto;padding:14px 28px;
+  display:flex;align-items:center;justify-content:space-between;gap:20px;
+}
+.brand{display:flex;align-items:center;gap:12px;font-family:var(--mono);font-size:.82rem;letter-spacing:.06em;color:var(--ink)}
+.brand .mark{
+  width:26px;height:26px;border:1.5px solid var(--teal);border-radius:50%;
+  position:relative;flex:none;
+}
+.brand .mark::after{
+  content:"";position:absolute;inset:50% auto auto 50%;width:6px;height:6px;
+  background:var(--teal);border-radius:50%;transform:translate(-50%,-50%);
+}
+.nav-links{display:flex;gap:26px;align-items:center}
+.nav-links a{
+  font-family:var(--mono);font-size:.74rem;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--muted);text-decoration:none;position:relative;padding:4px 0;
+  transition:color .25s ease;
+}
+.nav-links a::after{
+  content:"";position:absolute;left:0;bottom:-2px;height:1px;width:0;background:var(--teal);
+  transition:width .28s ease;
+}
+.nav-links a:hover,.nav-links a:focus-visible{color:var(--ink)}
+.nav-links a:hover::after,.nav-links a:focus-visible::after{width:100%}
+.nav-status{display:flex;align-items:center;gap:8px;font-family:var(--mono);font-size:.7rem;color:var(--muted);letter-spacing:.08em}
+.dot{width:7px;height:7px;border-radius:50%;background:var(--teal);box-shadow:0 0 0 0 var(--teal);animation:pulse 2.4s ease-out infinite}
+@keyframes pulse{0%{box-shadow:0 0 0 0 rgba(61,214,192,.55)}70%{box-shadow:0 0 0 8px rgba(61,214,192,0)}100%{box-shadow:0 0 0 0 rgba(61,214,192,0)}}
+
+/* ===================== HERO ===================== */
+.hero{padding:78px 0 64px;position:relative}
+.hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:56px;align-items:center}
+.hero-eyebrow{margin-bottom:22px;display:flex;gap:14px;align-items:center;flex-wrap:wrap}
+.hero-eyebrow .sep{width:34px;height:1px;background:var(--line-strong)}
+.hero h1{
+  font-family:var(--display);font-weight:600;line-height:.98;letter-spacing:-.02em;
+  font-size:clamp(2.8rem,7vw,5.1rem);margin-bottom:6px;
+}
+.hero h1 .ln{display:block;overflow:hidden}
+.hero h1 .ln span{display:block;transform:translateY(102%);animation:rise .9s cubic-bezier(.22,1,.36,1) forwards}
+.hero h1 .ln:nth-child(2) span{animation-delay:.08s}
+@keyframes rise{to{transform:translateY(0)}}
+.role{
+  font-family:var(--mono);font-size:.92rem;letter-spacing:.04em;color:var(--teal);
+  margin:18px 0 22px;opacity:0;animation:fade .8s ease .55s forwards;
+}
+.role .slash{color:var(--faint)}
+.lede{
+  font-size:1.06rem;color:var(--muted);max-width:46ch;font-weight:300;
+  opacity:0;animation:fade .8s ease .7s forwards;
+}
+.lede b{color:var(--ink);font-weight:500}
+@keyframes fade{to{opacity:1}}
+
+.hero-cta{display:flex;gap:14px;margin-top:32px;flex-wrap:wrap;opacity:0;animation:fade .8s ease .85s forwards}
+.btn{
+  font-family:var(--mono);font-size:.78rem;letter-spacing:.12em;text-transform:uppercase;
+  text-decoration:none;padding:13px 22px;border-radius:2px;display:inline-flex;gap:9px;align-items:center;
+  transition:transform .2s ease,background .25s ease,border-color .25s ease,color .25s ease;
+}
+.btn-primary{background:var(--teal);color:#06100D;font-weight:600}
+.btn-primary:hover,.btn-primary:focus-visible{transform:translateY(-2px);background:#5CE6D2}
+.btn-ghost{border:1px solid var(--line-strong);color:var(--ink)}
+.btn-ghost:hover,.btn-ghost:focus-visible{border-color:var(--teal);color:var(--teal);transform:translateY(-2px)}
+
+.hero-meta{margin-top:34px;display:flex;gap:26px;flex-wrap:wrap;opacity:0;animation:fade .8s ease 1s forwards}
+.hero-meta div{font-family:var(--mono);font-size:.72rem;color:var(--faint);letter-spacing:.06em}
+.hero-meta b{display:block;color:var(--ink);font-size:.86rem;font-weight:500;margin-top:3px;letter-spacing:0}
+
+/* ---- inspection viewport (signature) ---- */
+.scope{
+  position:relative;aspect-ratio:1/1.06;border:1px solid var(--line-strong);
+  background:
+    radial-gradient(circle at 50% 40%,rgba(61,214,192,.06),transparent 60%),
+    var(--bg-2);
+  border-radius:3px;overflow:hidden;
+  box-shadow:0 30px 70px -30px rgba(0,0,0,.7),inset 0 0 0 1px rgba(255,255,255,.02);
+  opacity:0;animation:fade 1s ease .35s forwards;
+}
+.scope-grid{
+  position:absolute;inset:0;z-index:1;pointer-events:none;
+  background-image:
+    linear-gradient(rgba(61,214,192,.07) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(61,214,192,.07) 1px,transparent 1px);
+  background-size:34px 34px;
+  mask-image:radial-gradient(circle at 50% 44%,#000 30%,transparent 75%);
+}
+.scope-photo{
+  position:absolute;inset:11% 11% 18% 11%;z-index:2;border-radius:50%;overflow:hidden;
+  border:1px solid rgba(61,214,192,.25);
+  filter:grayscale(.35) contrast(1.05) brightness(.95);
+  -webkit-mask-image:radial-gradient(circle,#000 70%,transparent 100%);
+  mask-image:radial-gradient(circle,#000 70%,transparent 100%);
+}
+.scope-photo img{width:100%;height:100%;object-fit:cover;object-position:50% 30%;display:block}
+.scope-photo::after{
+  content:"";position:absolute;inset:0;
+  background:radial-gradient(circle,transparent 55%,rgba(61,214,192,.12) 100%);
+}
+.scope svg{position:absolute;inset:0;width:100%;height:100%;z-index:3;pointer-events:none}
+.ring{
+  fill:none;stroke:var(--teal);stroke-width:1.1;
+  stroke-dasharray:760;stroke-dashoffset:760;
+  animation:draw 1.6s cubic-bezier(.5,0,.2,1) .8s forwards;
+  filter:drop-shadow(0 0 4px rgba(61,214,192,.5));
+}
+@keyframes draw{to{stroke-dashoffset:0}}
+.tick{stroke:var(--teal);stroke-width:1;opacity:0;animation:fade .4s ease 2.1s forwards}
+.cross{stroke:rgba(61,214,192,.55);stroke-width:.8;stroke-dasharray:4 5}
+.cross-h,.cross-v{transform-origin:center;opacity:0;animation:fade .6s ease .55s forwards}
+.bracket{stroke:var(--amber);stroke-width:1.4;fill:none;opacity:0;animation:fade .5s ease 2.3s forwards}
+.scan{
+  position:absolute;left:0;right:0;height:2px;z-index:3;
+  background:linear-gradient(90deg,transparent,var(--teal),transparent);
+  box-shadow:0 0 14px 2px rgba(61,214,192,.4);
+  animation:sweep 3.6s ease-in-out infinite;opacity:.8;
+}
+@keyframes sweep{0%{top:8%}50%{top:88%}100%{top:8%}}
+
+.scope-readout{
+  position:absolute;left:0;right:0;bottom:0;z-index:4;
+  padding:12px 16px;display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;
+  font-family:var(--mono);font-size:.66rem;letter-spacing:.1em;color:var(--muted);
+  background:linear-gradient(0deg,rgba(13,18,23,.92),transparent);
+  border-top:1px solid var(--line);
+}
+.scope-readout .k{color:var(--faint)}
+.scope-readout .v{color:var(--teal)}
+.scope-readout .v.amber{color:var(--amber)}
+.corner{position:absolute;width:18px;height:18px;border:2px solid var(--teal);z-index:4;opacity:.75}
+.corner.tl{top:12px;left:12px;border-right:0;border-bottom:0}
+.corner.tr{top:12px;right:12px;border-left:0;border-bottom:0}
+.corner.bl{bottom:12px;left:12px;border-right:0;border-top:0}
+.corner.br{bottom:12px;right:12px;border-left:0;border-top:0}
+
+/* ===================== SPEC STRIP ===================== */
+.strip{border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:var(--bg-2)}
+.strip-inner{display:grid;grid-template-columns:repeat(4,1fr)}
+.spec{padding:26px 28px;border-right:1px solid var(--line)}
+.spec:last-child{border-right:0}
+.spec .n{font-family:var(--display);font-size:1.7rem;font-weight:600;color:var(--ink);letter-spacing:-.01em}
+.spec .n .u{font-size:.9rem;color:var(--teal);font-family:var(--mono);font-weight:500}
+.spec .l{font-family:var(--mono);font-size:.68rem;letter-spacing:.14em;text-transform:uppercase;color:var(--faint);margin-top:6px}
+
+/* ===================== SECTIONS ===================== */
+section.block{padding:88px 0}
+.sec-head{display:flex;align-items:baseline;gap:18px;margin-bottom:44px;flex-wrap:wrap}
+.sec-head h2{font-family:var(--display);font-weight:600;font-size:clamp(1.7rem,3.5vw,2.5rem);letter-spacing:-.01em}
+.sec-head .idx{font-family:var(--mono);font-size:.8rem;color:var(--teal);letter-spacing:.1em}
+.sec-head .rule{flex:1;height:1px;background:var(--line);align-self:center}
+
+/* reveal */
+.reveal{opacity:0;transform:translateY(22px);transition:opacity .7s ease,transform .7s cubic-bezier(.22,1,.36,1)}
+.reveal.in{opacity:1;transform:none}
+
+/* ---- timeline / experience ---- */
+.log{position:relative;padding-left:30px}
+.log::before{content:"";position:absolute;left:6px;top:6px;bottom:6px;width:1px;background:var(--line-strong)}
+.entry{position:relative;padding:0 0 46px 28px}
+.entry:last-child{padding-bottom:0}
+.entry::before{
+  content:"";position:absolute;left:-30px;top:7px;width:13px;height:13px;border-radius:50%;
+  background:var(--bg);border:2px solid var(--teal);
+}
+.entry.cur::before{background:var(--teal);box-shadow:0 0 0 4px var(--teal-soft)}
+.entry .when{font-family:var(--mono);font-size:.72rem;letter-spacing:.1em;color:var(--faint);text-transform:uppercase}
+.entry h3{font-family:var(--display);font-weight:600;font-size:1.28rem;margin:7px 0 2px;letter-spacing:-.01em}
+.entry .org{font-family:var(--mono);font-size:.84rem;color:var(--teal);margin-bottom:14px}
+.entry .org .loc{color:var(--faint)}
+.entry ul{list-style:none;display:flex;flex-direction:column;gap:9px}
+.entry ul li{position:relative;padding-left:20px;color:var(--muted);font-size:.97rem;max-width:64ch}
+.entry ul li::before{content:"";position:absolute;left:0;top:11px;width:7px;height:1px;background:var(--teal)}
+.entry ul li b{color:var(--ink);font-weight:500}
+.badge{display:inline-block;font-family:var(--mono);font-size:.62rem;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--teal);border:1px solid var(--teal-dim);border-radius:2px;padding:2px 8px;margin-left:10px;vertical-align:middle}
+
+/* ---- education ---- */
+.edu{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+.card{
+  border:1px solid var(--line);background:var(--panel);border-radius:3px;padding:30px;
+  transition:border-color .3s ease,transform .3s ease;
+}
+.card:hover{border-color:var(--line-strong);transform:translateY(-3px)}
+.card .when{font-family:var(--mono);font-size:.72rem;letter-spacing:.1em;color:var(--faint);text-transform:uppercase}
+.card h3{font-family:var(--display);font-weight:600;font-size:1.22rem;margin:10px 0 4px}
+.card .org{font-family:var(--mono);font-size:.84rem;color:var(--teal);margin-bottom:14px}
+.card p{color:var(--muted);font-size:.96rem}
+.card.thesis{border-color:var(--teal-dim);background:linear-gradient(180deg,var(--teal-soft),var(--panel))}
+.card.thesis .ttl{font-family:var(--display);font-style:italic;color:var(--ink);font-size:1.06rem;margin:10px 0 12px;line-height:1.35}
+.chips{display:flex;flex-wrap:wrap;gap:7px;margin-top:14px}
+.chips span{font-family:var(--mono);font-size:.66rem;letter-spacing:.06em;color:var(--muted);border:1px solid var(--line-strong);border-radius:2px;padding:4px 9px}
+
+/* ---- skills ---- */
+.skills{display:grid;grid-template-columns:repeat(2,1fr);gap:22px}
+.skill-group{border:1px solid var(--line);border-radius:3px;padding:26px;background:var(--panel);transition:border-color .3s ease}
+.skill-group:hover{border-color:var(--line-strong)}
+.skill-group h3{font-family:var(--mono);font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;color:var(--amber);margin-bottom:18px;display:flex;align-items:center;gap:10px}
+.skill-group h3::before{content:"";width:18px;height:1px;background:var(--amber)}
+.tags{display:flex;flex-wrap:wrap;gap:9px}
+.tags span{
+  font-family:var(--body);font-size:.88rem;color:var(--ink);
+  border:1px solid var(--line-strong);border-radius:2px;padding:7px 13px;
+  transition:border-color .25s ease,color .25s ease,background .25s ease;cursor:default;
+}
+.tags span:hover{border-color:var(--teal);color:var(--teal);background:var(--teal-soft)}
+
+/* ---- contact ---- */
+.contact-wrap{
+  border:1px solid var(--line-strong);border-radius:4px;padding:48px;
+  background:radial-gradient(circle at 80% 0%,var(--teal-soft),transparent 55%),var(--panel);
+  display:grid;grid-template-columns:1.3fr 1fr;gap:40px;align-items:center;
+}
+.contact-wrap h2{font-family:var(--display);font-weight:600;font-size:clamp(1.8rem,4vw,2.7rem);letter-spacing:-.01em;line-height:1.05}
+.contact-wrap p{color:var(--muted);margin-top:14px;max-width:42ch}
+.links{display:flex;flex-direction:column;gap:10px}
+.links a{
+  display:flex;justify-content:space-between;align-items:center;gap:14px;
+  font-family:var(--mono);font-size:.84rem;letter-spacing:.04em;color:var(--ink);
+  text-decoration:none;border:1px solid var(--line);border-radius:2px;padding:14px 18px;
+  transition:border-color .25s ease,background .25s ease,transform .2s ease;
+}
+.links a span.t{color:var(--faint);text-transform:uppercase;font-size:.66rem;letter-spacing:.16em}
+.links a:hover,.links a:focus-visible{border-color:var(--teal);background:var(--teal-soft);transform:translateX(3px)}
+.links a .arr{color:var(--teal)}
+
+/* ===================== FOOTER ===================== */
+footer{border-top:1px solid var(--line);padding:30px 0;background:var(--bg-2)}
+.foot-inner{display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;
+  font-family:var(--mono);font-size:.72rem;color:var(--faint);letter-spacing:.06em}
+.foot-inner a{color:var(--muted);text-decoration:none}
+.foot-inner a:hover{color:var(--teal)}
+
+/* ===================== RESPONSIVE ===================== */
+@media(max-width:860px){
+  .hero-grid{grid-template-columns:1fr;gap:44px}
+  .scope{max-width:360px;margin:0 auto}
+  .strip-inner{grid-template-columns:repeat(2,1fr)}
+  .spec:nth-child(2){border-right:0}
+  .spec:nth-child(1),.spec:nth-child(2){border-bottom:1px solid var(--line)}
+  .edu,.skills,.contact-wrap{grid-template-columns:1fr}
+  .nav-links{display:none}
+}
+@media(max-width:520px){
+  .strip-inner{grid-template-columns:1fr}
+  .spec{border-right:0;border-bottom:1px solid var(--line)}
+  .nav-status{display:none}
+}
+
+/* reduced motion */
+@media(prefers-reduced-motion:reduce){
+  *{animation:none!important;transition:none!important;scroll-behavior:auto!important}
+  .hero h1 .ln span{transform:none}
+  .role,.lede,.hero-cta,.hero-meta,.scope{opacity:1}
+  .ring{stroke-dashoffset:0}
+  .reveal{opacity:1;transform:none}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <div class="brand"><span class="mark"></span> DELDAR&nbsp;YOUSEF</div>
+    <div class="nav-links">
+      <a href="#work">Work</a>
+      <a href="#education">Education</a>
+      <a href="#skills">Skills</a>
+      <a href="#contact">Contact</a>
+    </div>
+    <div class="nav-status"><span class="dot"></span> Open to roles · Sep 2026</div>
+  </div>
+</nav>
+
+<!-- ===================== HERO ===================== -->
+<header class="hero">
+  <div class="wrap">
+    <div class="hero-grid">
+      <div class="hero-left">
+        <div class="hero-eyebrow">
+          <span class="tag">M.Sc. Computer Engineer</span>
+          <span class="sep"></span>
+          <span class="tag muted">Örebro University · 2026</span>
+        </div>
+
+        <h1>
+          <span class="ln"><span>Deldar</span></span>
+          <span class="ln"><span>Yousef</span></span>
+        </h1>
+
+        <p class="role">Computer Vision <span class="slash">/</span> Industrial Measurement <span class="slash">/</span> Automation</p>
+
+        <p class="lede">I build vision and data systems that turn physical measurement into reliable, automated information. My thesis pipeline now runs in production at <b>Ovako</b>, resolving steel bar ends to <b>thousandths of a millimetre</b> — well inside Ovako's ±0.5&nbsp;mm tolerance.</p>
+
+        <div class="hero-cta">
+          <a class="btn btn-primary" href="#work">View work <span>↓</span></a>
+          <a class="btn btn-ghost" href="#contact">Get in touch</a>
+        </div>
+
+        <div class="hero-meta">
+          <div>BASED IN<b>Lindesberg, Sweden</b></div>
+          <div>SPECIALIZATION<b>Autonomous &amp; Intelligent Systems</b></div>
+          <div>LANGUAGES<b>Swedish · English</b></div>
+        </div>
+      </div>
+
+      <!-- signature: inspection viewport -->
+      <div class="hero-right">
+        <div class="scope" role="img" aria-label="Portrait of Deldar Yousef framed inside a machine-vision inspection overlay">
+          <div class="scope-grid"></div>
+          <div class="scope-photo">
+            <img src="https://deldaryousef.github.io/Online-Resume/IMG_2847.JPG" alt="Deldar Yousef" />
+          </div>
+          <div class="scan"></div>
+          <svg viewBox="0 0 320 320" preserveAspectRatio="xMidYMid meet" aria-hidden="true">
+            <line class="cross cross-h" x1="0" y1="148" x2="320" y2="148"/>
+            <line class="cross cross-v" x1="160" y1="0" x2="160" y2="296"/>
+            <circle class="ring" cx="160" cy="148" r="121"/>
+            <line class="tick" x1="160" y1="20" x2="160" y2="34"/>
+            <line class="tick" x1="160" y1="262" x2="160" y2="276"/>
+            <line class="tick" x1="32" y1="148" x2="46" y2="148"/>
+            <line class="tick" x1="274" y1="148" x2="288" y2="148"/>
+            <path class="bracket" d="M70 60 h-16 v16"/>
+            <path class="bracket" d="M250 60 h16 v16"/>
+            <path class="bracket" d="M70 236 h-16 v-16"/>
+            <path class="bracket" d="M250 236 h16 v-16"/>
+          </svg>
+          <span class="corner tl"></span><span class="corner tr"></span>
+          <span class="corner bl"></span><span class="corner br"></span>
+          <div class="scope-readout">
+            <span><span class="k">SUBJECT</span> <span class="v">D.YOUSEF</span></span>
+            <span><span class="k">TOL</span> <span class="v amber">±0.50mm</span></span>
+            <span><span class="k">Δ</span> <span class="v" id="ro-val">0.004mm</span></span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ===================== SPEC STRIP ===================== -->
+<div class="strip">
+  <div class="strip-inner wrap" style="padding-top:0;padding-bottom:0">
+    <div class="spec"><div class="n">0.001<span class="u">mm</span></div><div class="l">Measurement precision</div></div>
+    <div class="spec"><div class="n">5<span class="u">yr</span></div><div class="l">M.Sc. Civilingenjör</div></div>
+    <div class="spec"><div class="n">Prod.</div><div class="l">Thesis system deployed</div></div>
+    <div class="spec"><div class="n">Py<span class="u">/C/C++</span></div><div class="l">Core languages</div></div>
+  </div>
+</div>
+
+<!-- ===================== EXPERIENCE ===================== -->
+<section class="block" id="work">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="idx">01</span>
+      <h2>Experience</h2>
+      <span class="rule"></span>
+    </div>
+
+    <div class="log">
+      <div class="entry cur reveal">
+        <div class="when">Jun 2026 — Present</div>
+        <h3>Process Engineer <span class="badge">Current</span></h3>
+        <div class="org">Ovako <span class="loc">· Hällefors, Sweden</span></div>
+        <ul>
+          <li>Developing a <b>semi-automated steel bar end measurement system</b>: microscope imaging feeds an automatic measurement pipeline, with results written to a local database.</li>
+          <li>Building the data path from edge to reporting — local capture through to <b>SQL Server</b> and <b>Power BI</b> dashboards for production monitoring.</li>
+          <li>Extending my thesis work into a maintainable production tool, coordinating authentication, naming conventions and integration with internal IT.</li>
+          <li>Running a <b>3D-printing pilot study</b> assessing the feasibility and cost savings of producing spare and wear parts in-house instead of purchasing them — modelling parts in parametric CAD and printing them for evaluation.</li>
+        </ul>
+      </div>
+
+      <div class="entry reveal">
+        <div class="when">2024 — 2026</div>
+        <h3>Master's Thesis — Vision-Based Measurement</h3>
+        <div class="org">Ovako <span class="loc">· in collaboration with Örebro University</span></div>
+        <ul>
+          <li>Designed a <b>Python &amp; OpenCV</b> pipeline measuring chamfer length on cylindrical steel bar ends: polar remapping, Hough circle detection and subpixel edge tracking.</li>
+          <li>Resolved measurements to <b>thousandths of a millimetre</b>, validated against manual microscope measurements — comfortably inside Ovako's ±0.5&nbsp;mm production tolerance — and deployed as a working production system.</li>
+        </ul>
+      </div>
+
+      <div class="entry reveal">
+        <div class="when">Jun 2024 — Jul 2024</div>
+        <h3>Data Analyst Intern</h3>
+        <div class="org">Hitachi Energy <span class="loc">· Ludvika, Sweden</span></div>
+        <ul>
+          <li>Built <b>Power BI</b> reports tracking file activity across the organisation, working largely independently with light supervision.</li>
+          <li>Wrote <b>Python</b> to extract data from a version-control system, set up a database to store it, and connected that database to Power BI.</li>
+        </ul>
+      </div>
+
+      <div class="entry reveal">
+        <div class="when">Mar 2022 — 2026</div>
+        <h3>Sales Associate</h3>
+        <div class="org">Circle K <span class="loc">· part-time during studies</span></div>
+        <ul>
+          <li>Delivered customer service, handled transactions and kept accurate records at the register.</li>
+          <li>Managed inventory and displays — restocking, monitoring levels and organising the floor to support sales.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== EDUCATION ===================== -->
+<section class="block" id="education">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="idx">02</span>
+      <h2>Education</h2>
+      <span class="rule"></span>
+    </div>
+
+    <div class="edu">
+      <div class="card reveal">
+        <div class="when">2021 — 2026</div>
+        <h3>M.Sc. in Computer Engineering</h3>
+        <div class="org">Örebro University · Civilingenjör, Datateknik</div>
+        <p>Five-year engineering degree with a specialization in autonomous and intelligent systems — covering computer vision, machine learning, robotics, sensors and control.</p>
+        <div class="chips">
+          <span>Computer Vision</span><span>Machine Learning</span><span>Robotics</span><span>Control &amp; Sensors</span><span>Mathematics</span>
+        </div>
+      </div>
+
+      <div class="card thesis reveal">
+        <div class="when">Degree project · 2026</div>
+        <h3>Master's Thesis</h3>
+        <p class="ttl">"Vision-Based Chamfer Length Measurement on Cylindrical Steel Bar Ends"</p>
+        <p>A production-deployed inspection pipeline built with OpenCV — polar remapping, Hough circle detection and subpixel edge detection — resolving to thousandths of a millimetre, validated against manual measurement.</p>
+        <div class="chips">
+          <span>Python</span><span>OpenCV</span><span>Subpixel edges</span><span>Image processing</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== SKILLS ===================== -->
+<section class="block" id="skills">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="idx">03</span>
+      <h2>Skills</h2>
+      <span class="rule"></span>
+    </div>
+
+    <div class="skills">
+      <div class="skill-group reveal">
+        <h3>Computer Vision &amp; ML</h3>
+        <div class="tags">
+          <span>OpenCV</span><span>Image processing</span><span>Edge detection</span><span>Hough transforms</span><span>Machine learning</span>
+        </div>
+      </div>
+      <div class="skill-group reveal">
+        <h3>Data &amp; BI</h3>
+        <div class="tags">
+          <span>Power BI</span><span>DAX</span><span>Power Query</span><span>SQL Server</span><span>SQLite</span><span>Databases</span>
+        </div>
+      </div>
+      <div class="skill-group reveal">
+        <h3>Programming</h3>
+        <div class="tags">
+          <span>Python</span><span>C</span><span>C++</span><span>MATLAB</span><span>SQL</span>
+        </div>
+      </div>
+      <div class="skill-group reveal">
+        <h3>Engineering &amp; Tools</h3>
+        <div class="tags">
+          <span>Process engineering</span><span>Industrial automation</span><span>Parametric CAD (OpenSCAD)</span><span>3D printing</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== CONTACT ===================== -->
+<section class="block" id="contact">
+  <div class="wrap">
+    <div class="contact-wrap reveal">
+      <div>
+        <span class="tag amber">Available from September 2026</span>
+        <h2 style="margin-top:16px">Let's build something measurable.</h2>
+        <p>Open to roles in industrial computer vision, automation and data — and always happy to talk shop about getting reliable numbers out of the real world.</p>
+      </div>
+      <div class="links">
+        <a href="mailto:your.email@example.com"><span class="t">Email</span><span>your.email@example.com <span class="arr">→</span></span></a>
+        <a href="https://www.linkedin.com/in/your-linkedin/" target="_blank" rel="noopener"><span class="t">LinkedIn</span><span>/in/deldar-yousef <span class="arr">↗</span></span></a>
+        <a href="https://deldaryousef.github.io/Online-Resume/Hobbies.html"><span class="t">More</span><span>My hobbies <span class="arr">→</span></span></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="foot-inner wrap" style="padding-top:0;padding-bottom:0">
+    <span>© <span id="yr"></span> Deldar Yousef · All rights reserved.</span>
+    <span>Designed &amp; built · <a href="https://deldaryousef.github.io/Online-Resume/">github.io/Online-Resume</a></span>
+  </div>
+</footer>
+
+<script>
+document.getElementById('yr').textContent = new Date().getFullYear();
+
+/* scroll reveal */
+const io = new IntersectionObserver((es)=>{
+  es.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target);} });
+},{threshold:.14});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+
+/* readout count-up (skips if reduced motion) */
+const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+if(!reduce){
+  const val = document.getElementById('ro-val');
+  let v=0.50; const target=0.004;
+  const t=setInterval(()=>{
+    v = target + (v-target)*0.72;
+    if(Math.abs(v-target)<0.0006){ v=target; clearInterval(t); }
+    val.textContent = v.toFixed(3)+'mm';
+  },90);
+}
+</script>
+</body>
 </html>
