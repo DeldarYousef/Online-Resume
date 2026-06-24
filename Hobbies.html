@@ -4,7 +4,7 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Deldar Yousef — Off the Clock</title>
-<meta name="description" content="Deldar Yousef's hobbies — 3D printing, building PCs, Arduino and Elegoo electronics, padel and football." />
+<meta name="description" content="Deldar Yousef's hobbies — football, padel, 3D printing, PC gaming, and Arduino and Elegoo electronics." />
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -29,7 +29,6 @@ body::before{content:"";position:fixed;inset:0;background-image:linear-gradient(
 .tag{font-family:var(--mono);font-size:.7rem;letter-spacing:.22em;text-transform:uppercase;color:var(--teal)}
 .tag.muted{color:var(--faint)}
 
-/* nav */
 nav{position:sticky;top:0;z-index:50;backdrop-filter:blur(10px);background:rgba(13,18,23,.72);border-bottom:1px solid var(--line)}
 .nav-inner{max-width:var(--maxw);margin:0 auto;padding:14px 28px;display:flex;align-items:center;justify-content:space-between;gap:20px}
 .brand{display:flex;align-items:center;gap:12px;font-family:var(--mono);font-size:.82rem;letter-spacing:.06em;color:var(--ink)}
@@ -38,7 +37,6 @@ nav{position:sticky;top:0;z-index:50;backdrop-filter:blur(10px);background:rgba(
 .nav-back{font-family:var(--mono);font-size:.74rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);text-decoration:none;display:flex;align-items:center;gap:8px;transition:color .25s ease}
 .nav-back:hover,.nav-back:focus-visible{color:var(--teal)}
 
-/* header */
 .head{padding:72px 0 40px}
 .head .eyebrow{display:flex;gap:14px;align-items:center;flex-wrap:wrap;margin-bottom:22px}
 .head .eyebrow .sep{width:34px;height:1px;background:var(--line-strong)}
@@ -48,13 +46,8 @@ nav{position:sticky;top:0;z-index:50;backdrop-filter:blur(10px);background:rgba(
 .head .lede{font-size:1.08rem;color:var(--muted);max-width:54ch;margin-top:22px;opacity:0;animation:fade .8s ease .5s forwards}
 @keyframes fade{to{opacity:1}}
 
-/* hobby grid */
 .grid{display:grid;grid-template-columns:repeat(2,1fr);gap:22px;padding:24px 0 90px}
-.hobby{
-  position:relative;border:1px solid var(--line);background:var(--panel);border-radius:3px;padding:30px;
-  opacity:0;transform:translateY(22px);transition:opacity .7s ease,transform .7s cubic-bezier(.22,1,.36,1),border-color .3s ease;
-  overflow:hidden;
-}
+.hobby{position:relative;border:1px solid var(--line);background:var(--panel);border-radius:3px;padding:30px;opacity:0;transform:translateY(22px);transition:opacity .7s ease,transform .7s cubic-bezier(.22,1,.36,1),border-color .3s ease;overflow:hidden}
 .hobby.in{opacity:1;transform:none}
 .hobby:hover{border-color:var(--teal-dim);transform:translateY(-4px)}
 .hobby::after{content:"";position:absolute;right:-40px;top:-40px;width:120px;height:120px;border-radius:50%;background:radial-gradient(circle,var(--teal-soft),transparent 70%);opacity:0;transition:opacity .35s ease}
@@ -69,7 +62,6 @@ nav{position:sticky;top:0;z-index:50;backdrop-filter:blur(10px);background:rgba(
 .chips{display:flex;flex-wrap:wrap;gap:7px;margin-top:18px}
 .chips span{font-family:var(--mono);font-size:.66rem;letter-spacing:.06em;color:var(--muted);border:1px solid var(--line-strong);border-radius:2px;padding:4px 9px}
 
-/* footer */
 footer{border-top:1px solid var(--line);padding:30px 0;background:var(--bg-2)}
 .foot-inner{display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;font-family:var(--mono);font-size:.72rem;color:var(--faint);letter-spacing:.06em}
 .foot-inner a{color:var(--muted);text-decoration:none}
@@ -88,7 +80,7 @@ footer{border-top:1px solid var(--line);padding:30px 0;background:var(--bg-2)}
 <nav>
   <div class="nav-inner">
     <div class="brand"><span class="mark"></span> DELDAR&nbsp;YOUSEF</div>
-    <a class="nav-back" href="index.html"><span>←</span> Back to resume</a>
+    <a class="nav-back" href="index.html"><span>&larr;</span> Back to resume</a>
   </div>
 </nav>
 
@@ -100,7 +92,7 @@ footer{border-top:1px solid var(--line);padding:30px 0;background:var(--bg-2)}
       <span class="tag muted">Personal log</span>
     </div>
     <h1><span>Hobbies</span></h1>
-    <p class="lede">Most of what I do for fun is some flavour of building things or being competitive about them. Here's where my time goes when I'm not measuring steel.</p>
+    <p class="lede">A mix of sport and tinkering. Here's where my time goes when I'm not measuring steel.</p>
   </div>
 </header>
 
@@ -110,37 +102,13 @@ footer{border-top:1px solid var(--line);padding:30px 0;background:var(--bg-2)}
     <article class="hobby reveal">
       <div class="top">
         <div class="icon" aria-hidden="true">
-          <svg viewBox="0 0 24 24"><path d="M6 9V4h12v5"/><rect x="4" y="9" width="16" height="7" rx="1"/><path d="M8 16v4h8v-4"/><circle cx="17" cy="12.5" r=".6" fill="currentColor"/></svg>
+          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><path d="M12 7.5l3.5 2.5-1.3 4h-4.4l-1.3-4z"/><path d="M12 7.5V4M15.5 10l3-1.5M14.2 14l2.2 2.8M9.8 14l-2.2 2.8M8.5 10l-3-1.5"/></svg>
         </div>
         <span class="idx">01</span>
       </div>
-      <h2>3D printing</h2>
-      <p>I run a <b>Bambu Lab A1</b> and design most of what I print myself in OpenSCAD — parametric, so I can change one dimension and re-slice instead of starting over. It's the hobby that feeds all the others: enclosures, mounts, brackets and replacement parts for whatever needs one.</p>
-      <div class="chips"><span>Bambu Lab A1</span><span>OpenSCAD</span><span>PETG</span><span>Functional parts</span></div>
-    </article>
-
-    <article class="hobby reveal">
-      <div class="top">
-        <div class="icon" aria-hidden="true">
-          <svg viewBox="0 0 24 24"><rect x="7" y="7" width="10" height="10" rx="1"/><path d="M10 4v3M14 4v3M10 17v3M14 17v3M4 10h3M4 14h3M17 10h3M17 14h3"/></svg>
-        </div>
-        <span class="idx">02</span>
-      </div>
-      <h2>Building PCs</h2>
-      <p>I build and tinker with my own computers — picking the parts, assembling, cable management and the occasional troubleshooting rabbit hole. Half the fun is the planning spreadsheet before anything even ships.</p>
-      <div class="chips"><span>PC building</span><span>Hardware</span><span>Tinkering</span></div>
-    </article>
-
-    <article class="hobby reveal">
-      <div class="top">
-        <div class="icon" aria-hidden="true">
-          <svg viewBox="0 0 24 24"><rect x="4" y="5" width="16" height="14" rx="1.5"/><circle cx="9" cy="12" r="1.4"/><path d="M13 9.5h4M13 12h4M13 14.5h4"/></svg>
-        </div>
-        <span class="idx">03</span>
-      </div>
-      <h2>Arduino &amp; Elegoo kits</h2>
-      <p>I like working through <b>Elegoo</b> kits and building small <b>Arduino</b> projects — wiring up sensors and displays, writing the sketch, then printing an enclosure so it ends up as something real on a shelf. A recent one was a little climate monitor for my gaming room.</p>
-      <div class="chips"><span>Arduino</span><span>Elegoo</span><span>ESP32</span><span>Sensors</span></div>
+      <h2>Football</h2>
+      <p>The sport I keep coming back to. I love playing a casual game whenever I get the chance, and I'm just as happy watching &mdash; following the big games and arguing about them afterwards is half the fun.</p>
+      <div class="chips"><span>Football</span><span>Playing &amp; watching</span></div>
     </article>
 
     <article class="hobby reveal">
@@ -148,7 +116,7 @@ footer{border-top:1px solid var(--line);padding:30px 0;background:var(--bg-2)}
         <div class="icon" aria-hidden="true">
           <svg viewBox="0 0 24 24"><path d="M11 15.6c-3.6 0-6.3-2.9-6.3-6.8S7 2.4 11 2.4s6.3 2.5 6.3 6.4-2.7 6.8-6.3 6.8z"/><path d="M11.6 15.4l2.7 5.2"/><circle cx="8.7" cy="7" r=".55" fill="currentColor"/><circle cx="11" cy="6.1" r=".55" fill="currentColor"/><circle cx="13.3" cy="7" r=".55" fill="currentColor"/><circle cx="9" cy="9.8" r=".55" fill="currentColor"/><circle cx="11" cy="9.1" r=".55" fill="currentColor"/><circle cx="13" cy="9.8" r=".55" fill="currentColor"/></svg>
         </div>
-        <span class="idx">04</span>
+        <span class="idx">02</span>
       </div>
       <h2>Padel</h2>
       <p>A newer addiction. Fast, social, and a good excuse to be competitive without taking it too seriously. Easy to get into, surprisingly hard to get good at.</p>
@@ -158,13 +126,37 @@ footer{border-top:1px solid var(--line);padding:30px 0;background:var(--bg-2)}
     <article class="hobby reveal">
       <div class="top">
         <div class="icon" aria-hidden="true">
-          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><path d="M12 7.5l3.5 2.5-1.3 4h-4.4l-1.3-4z"/><path d="M12 7.5V4M15.5 10l3-1.5M14.2 14l2.2 2.8M9.8 14l-2.2 2.8M8.5 10l-3-1.5"/></svg>
+          <svg viewBox="0 0 24 24"><path d="M6 9V4h12v5"/><rect x="4" y="9" width="16" height="7" rx="1"/><path d="M8 16v4h8v-4"/><circle cx="17" cy="12.5" r=".6" fill="currentColor"/></svg>
+        </div>
+        <span class="idx">03</span>
+      </div>
+      <h2>3D printing</h2>
+      <p>I've got a <b>Bambu Lab A1</b> and use it as a practical tool more than anything &mdash; I'm no expert at 3D modelling, but it's been genuinely useful. I designed and printed the inspection rig that made my thesis measurements possible, plus the odd mount or bracket when something needs one.</p>
+      <div class="chips"><span>Bambu Lab A1</span><span>OpenSCAD</span><span>Practical prints</span></div>
+    </article>
+
+    <article class="hobby reveal">
+      <div class="top">
+        <div class="icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24"><rect x="7" y="7" width="10" height="10" rx="1"/><path d="M10 4v3M14 4v3M10 17v3M14 17v3M4 10h3M4 14h3M17 10h3M17 14h3"/></svg>
+        </div>
+        <span class="idx">04</span>
+      </div>
+      <h2>PC gaming</h2>
+      <p>I built my own gaming PC and spend a good chunk of my downtime on it. Picking the parts and putting it together was half the fun &mdash; the other half is everything I've played on it since.</p>
+      <div class="chips"><span>Gaming</span><span>Built my own rig</span></div>
+    </article>
+
+    <article class="hobby reveal">
+      <div class="top">
+        <div class="icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24"><rect x="4" y="5" width="16" height="14" rx="1.5"/><circle cx="9" cy="12" r="1.4"/><path d="M13 9.5h4M13 12h4M13 14.5h4"/></svg>
         </div>
         <span class="idx">05</span>
       </div>
-      <h2>Football</h2>
-      <p>My reliable midweek reset. I play most <b>Tuesdays and Thursdays</b> — the kind of routine that keeps the rest of the week in order.</p>
-      <div class="chips"><span>Football</span><span>Weekly</span></div>
+      <h2>Arduino &amp; Elegoo kits</h2>
+      <p>I like working through <b>Elegoo</b> kits and building small <b>Arduino</b> projects &mdash; wiring up sensors and displays, writing the sketch, then printing an enclosure so it ends up as something real on a shelf. A recent one was a little climate monitor for my gaming room.</p>
+      <div class="chips"><span>Arduino</span><span>Elegoo</span><span>ESP32</span><span>Sensors</span></div>
     </article>
 
   </div>
@@ -172,8 +164,8 @@ footer{border-top:1px solid var(--line);padding:30px 0;background:var(--bg-2)}
 
 <footer>
   <div class="foot-inner wrap" style="padding-top:0;padding-bottom:0">
-    <span>© <span id="yr"></span> Deldar Yousef · All rights reserved.</span>
-    <span><a href="index.html">← Back to resume</a></span>
+    <span>&copy; <span id="yr"></span> Deldar Yousef &middot; All rights reserved.</span>
+    <span><a href="index.html">&larr; Back to resume</a></span>
   </div>
 </footer>
 
